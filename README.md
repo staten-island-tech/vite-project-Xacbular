@@ -1,169 +1,219 @@
-## 🎨 Lesson: Using Custom Properties (CSS Variables) and JS to Create Themes
 
-### 🧠 Learning Objectives
+# 🧠 Lesson Plan: Understanding Binary, Bits, Bytes, and Hexadecimal
 
-By the end of this lesson, students will be able to:
+### 🎯 **Learning Goals (SWBAT)**
 
-- Define and use **CSS custom properties** (variables).
-- Explain how to reference and override them in different contexts.
-- Use **JavaScript** to dynamically change CSS variables by toggling class names.
-- Create a simple **light/dark or warm/cool theme switcher** for a webpage.
+Students will be able to:
+
+* Explain why computers use binary to represent data.
+* Convert between binary and decimal.
+* Understand how binary represents electrical signals (on/off).
+* Describe bits and bytes as basic units of digital information.
+* Use powers of two to understand how binary numbers are built.
+* Identify how hexadecimal simplifies binary representation.
+* Relate these concepts to **AP Computer Science Principles Big Idea 2: Data** and **Big Idea 4: Systems and Networks**.
 
 ---
 
-## 🧩 1. What Are CSS Custom Properties?
+## 🧩 **1. Introduction — Why Computers Speak “Binary”**
 
-CSS custom properties—also called **CSS variables**—let you store reusable values (like colors, fonts, or sizes) under a custom name.
+Imagine you have a light switch. It can only be in **two states**:
 
-They start with **two dashes (`--`)** and are defined inside a selector, usually `:root`.
+* 💡 **On**
+* 🌑 **Off**
 
-```css
-:root {
-  --primary-color: #135cc5;
-  --secondary-color: #2998ff;
-}
+Computers are made of billions of microscopic switches called **transistors** that behave the same way!
+Each switch represents **one bit** (short for *binary digit*):
+
+* `1` means **on** (electrical current is flowing)
+* `0` means **off** (no electrical current)
+
+This is the foundation of how a computer stores and processes everything — numbers, letters, images, and even videos.
+
+---
+
+## ⚙️ **2. Binary Numbers**
+
+Binary is a **base-2** system.
+That means instead of using ten digits (0–9) like in our **decimal system**, binary only uses **two** digits: `0` and `1`.
+
+### Example:
+
+Let’s count in binary:
+
+| Decimal | Binary |
+| ------- | ------ |
+| 0       | 0      |
+| 1       | 1      |
+| 2       | 10     |
+| 3       | 11     |
+| 4       | 100    |
+| 5       | 101    |
+| 6       | 110    |
+| 7       | 111    |
+| 8       | 1000   |
+
+Each time you move to the left, the value doubles — just like place values in decimal go up by tens.
+
+| Place Value (Binary)  | 8                             | 4 | 2 | 1 |
+| --------------------- | ----------------------------- | - | - | - |
+| Example Binary Number | 1                             | 0 | 1 | 1 |
+| Multiply & Add        | (1×8) + (0×4) + (1×2) + (1×1) |   |   |   |
+| Decimal Value         | **11**                        |   |   |   |
+
+---
+
+## ⚡ **3. How Binary Represents Electrical Signals**
+
+Inside a CPU:
+
+* A **high voltage** (electricity is flowing) → `1`
+* A **low voltage** (no electricity) → `0`
+
+These signals travel through millions of circuits that can combine and compare them to perform math, make decisions, and control other parts of the computer.
+
+### Analogy:
+
+Think of binary like a set of light switches that control a robot:
+
+```
+Switch 1:  ON (1)
+Switch 2:  OFF (0)
+Switch 3:  ON (1)
 ```
 
-You use them anywhere in your CSS with the `var()` function:
-
-```css
-button {
-  background-color: var(--primary-color);
-  color: white;
-}
-```
-
-Think of it like using a **nickname** for your color — if you ever change `--primary-color`, every element using it will update automatically.
+The robot might read that as “move forward!” Different combinations of 1s and 0s tell the computer to do different things.
 
 ---
 
-## 🌈 2. Examining the Provided Files
+## 🧱 **4. Bits and Bytes**
 
-### `index.html`
+A **bit** (binary digit) is the smallest piece of information a computer can store — a single **1** or **0**.
 
-```html
-<body class="cool">
-  <h1 class="hero">CSS Custom Properties</h1>
-  <div class="main">
-    <button class="btn">Click Me</button>
-  </div>
-</body>
-```
+But one bit alone can only store **two possibilities**. So computers group bits together into **bytes** to represent larger numbers and symbols.
 
-- The `body` starts with the class `cool`.
-- There’s a heading and a button — this will be the theme toggle button.
+* **1 byte = 8 bits**
+* 8 bits can represent **256 different combinations** (`2⁸ = 256`)
 
----
+| Size            | Name        | Number of Bits |
+| --------------- | ----------- | -------------- |
+| 1 bit           | Bit         | 1              |
+| 1 byte          | Byte        | 8              |
+| 1 kilobyte (KB) | 1,024 bytes | 8,192 bits     |
+| 1 megabyte (MB) | 1,024 KB    | 8,388,608 bits |
 
-### `style.css` (key parts)
-
-```css
-:root {
-  --light-blue: #2998ff;
-  --dark-blue: #135cc5;
-  --light-red: #f87171;
-  --dark-red: #dc2626;
-
-  /* Intentions */
-  --primary: var(--light-blue);
-  --secondary: var(--dark-blue);
-}
-
-.cool {
-  --primary: var(--light-blue);
-  --secondary: var(--dark-blue);
-}
-
-.warm {
-  --primary: var(--light-red);
-  --secondary: var(--dark-red);
-}
-
-.hero {
-  background-color: var(--primary);
-}
-
-.main {
-  background-color: var(--secondary);
-  height: 90vh;
-}
-```
-
-### What’s Happening:
-
-- The `:root` defines **default color variables**.
-- `.cool` and `.warm` **override** the same variables with different color sets.
-- Elements like `.hero` and `.main` use those variables to color the background.
-
-So depending on which class (`cool` or `warm`) is on the `<body>`, the entire site changes theme!
+That’s why computer files are measured in bytes — the more bytes, the more bits, and the more information!
 
 ---
 
-## ⚙️ 3. How JavaScript Makes It Interactive
+## 📊 **5. Binary and Powers of Two**
 
-### `index.js`
+Every position in a binary number represents a **power of 2**, starting from the right (2⁰).
+Each position doubles as you move left.
 
-```js
-document.querySelector(".btn").addEventListener("click", function () {
-  if (document.body.classList.contains("cool")) {
-    document.body.classList.add("warm");
-    document.body.classList.remove("cool");
-  } else {
-    document.body.classList.add("cool");
-    document.body.classList.remove("warm");
-  }
-});
-```
+| Power of 2   | 2⁷  | 2⁶ | 2⁵ | 2⁴ | 2³ | 2² | 2¹ | 2⁰ |
+| ------------ | --- | -- | -- | -- | -- | -- | -- | -- |
+| Value        | 128 | 64 | 32 | 16 | 8  | 4  | 2  | 1  |
+| Example Bits | 1   | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
 
-### Step-by-Step Explanation:
+In this example, every bit is turned **on (1)**, so we add up all the values:
 
-1. `document.querySelector(".btn")` → grabs the button element.
-2. `.addEventListener("click", ...)` → listens for a **click** on that button.
-3. Inside the function:
+`128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255`
 
-   - It checks if the `body` has the class `"cool"`.
-   - If yes → it removes `"cool"` and adds `"warm"`.
-   - If not → it does the reverse.
-
-When the class changes, the **CSS variables defined under that class** automatically change — so the colors update instantly.
+That’s the largest number you can represent with **8 bits (1 byte)** — `11111111` in binary equals **255 in decimal**.
 
 ---
 
-## 🔁 4. Visual Analogy
+## 🧮 **6. Binary Conversion Chart**
 
-Imagine `:root` is your **default paint palette**.
-Adding `.warm` or `.cool` is like switching to a **different palette** — but your paintbrush (the `var()` function) still uses the same color names (`--primary`, `--secondary`).
-You just changed what “primary” and “secondary” mean!
-
----
-
-## 🧠 5. Key Takeaways
-
-| Concept                  | Description                                         | Example                         |
-| ------------------------ | --------------------------------------------------- | ------------------------------- |
-| **Custom property**      | Reusable variable for styling                       | `--primary: #135cc5;`           |
-| **Accessing a variable** | Using its name with `var()`                         | `color: var(--primary);`        |
-| **Overriding**           | Redefine variables inside another class or selector | `.warm { --primary: red; }`     |
-| **JavaScript toggle**    | Changes class names dynamically                     | `body.classList.toggle("warm")` |
+| Decimal | Binary | Decimal | Binary |
+| ------- | ------ | ------- | ------ |
+| 0       | 0000   | 8       | 1000   |
+| 1       | 0001   | 9       | 1001   |
+| 2       | 0010   | 10      | 1010   |
+| 3       | 0011   | 11      | 1011   |
+| 4       | 0100   | 12      | 1100   |
+| 5       | 0101   | 13      | 1101   |
+| 6       | 0110   | 14      | 1110   |
+| 7       | 0111   | 15      | 1111   |
 
 ---
 
-## 🧪 6. Practice Ideas
+## 🧾 **7. Introducing Hexadecimal**
 
-**Activity 1 – Add a Dark Mode**
+Binary is great for computers, but it’s **hard for humans to read** — long strings of 1s and 0s are confusing.
 
-- Create `.dark` and `.light` classes.
-- Use CSS variables for background and text color.
-- Add a “Switch Mode” button using the same JS pattern.
+To make it easier, we use **hexadecimal** (base-16):
 
-**Activity 2 – Add More Themes**
+* Uses digits `0–9` and letters `A–F`.
+* Each **hex digit = 4 binary digits (bits)**.
 
-- Add a `.forest` theme (`green` shades) or `.ocean` theme (`teal` shades).
-- Modify the JavaScript to rotate between all themes.
+| Binary | Hex | Decimal |
+| ------ | --- | ------- |
+| 0000   | 0   | 0       |
+| 0001   | 1   | 1       |
+| 0010   | 2   | 2       |
+| 0011   | 3   | 3       |
+| 0100   | 4   | 4       |
+| 0101   | 5   | 5       |
+| 0110   | 6   | 6       |
+| 0111   | 7   | 7       |
+| 1000   | 8   | 8       |
+| 1001   | 9   | 9       |
+| 1010   | A   | 10      |
+| 1011   | B   | 11      |
+| 1100   | C   | 12      |
+| 1101   | D   | 13      |
+| 1110   | E   | 14      |
+| 1111   | F   | 15      |
 
-**Custom Font Sizes**
+### Example:
 
-- Create variables like `--base-font` or `--heading-font`.
-- Change them in `.large-text` or `.small-text` modes.
+`10101100` in binary → break into two groups: `1010 1100`
+`1010` = A, `1100` = C
+So `10101100` = **AC** in hexadecimal!
+
+---
+
+## 🧠 **8. Why It Matters (AP CSP Connections)**
+
+**Big Idea 2: Data**
+
+* Everything in computing — text, sound, images — is represented digitally using bits.
+* Larger units (bytes, kilobytes, etc.) store more complex data.
+
+**Big Idea 4: Systems and Networks**
+
+* The hardware of a computer interprets electrical signals as binary bits (on/off).
+* Data travels across systems using binary codes that machines understand.
+
+---
+
+## 🎨 **9. Practice**
+
+1. Convert `1101` to decimal.
+2. Convert `13` to binary.
+3. Convert binary `11111111` to hexadecimal.
+4. Why do you think we use hexadecimal instead of binary for things like color codes (`#FF5733`)?
+5. What’s the largest decimal number you can represent with 8 bits?
+
+---
+
+## 🧩 **10. Extension Challenge**
+
+Write your initials using binary or hexadecimal!
+Example:
+
+* “A” in ASCII = `65` decimal = `01000001` binary = `41` hex
+
+---
+
+## 👩‍🏫 **Teacher Notes & Accommodations**
+
+* Provide **color-coded manipulatives** (blue = 1, gray = 0).
+* Allow use of **binary-to-decimal charts** for support.
+* For visual learners, show an animation of **bits lighting up** (powers of two).
+* For kinesthetic learners, use **physical cards labeled 128, 64, 32, etc.** to flip up/down for 1s and 0s.
+* For auditory learners, connect binary patterns to **beats or rhythm patterns** (“on = clap, off = pause”).
 
 ---

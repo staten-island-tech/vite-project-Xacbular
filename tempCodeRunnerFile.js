@@ -1,4 +1,5 @@
 const discountPrice = [];
+const totalIndiv = [];
 
 const cart = [
   { name: "Apples", price: 3.5, quantity: 4 },
@@ -8,11 +9,19 @@ const cart = [
   { name: "Bananas", price: 1.25, quantity: 6 },
 ];
 
+total = 0;
 cart.forEach((item) => {
   price = item.price;
   if (price < 5) {
     price = price * 0.95;
   }
-  discountPrice.push(price);
+  totalIndiv.push(price * item.quantity);
 });
-console.log(discountPrice);
+for (let i = 0; i < 5; i++) {
+  total += totalIndiv[i];
+}
+console.log(
+  `Your final total is $${total} dollars. It can also be $${
+    total + 0.01
+  } dollars if you're a cool kid and know why`
+);
