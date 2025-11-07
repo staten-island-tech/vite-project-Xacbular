@@ -17,3 +17,35 @@ const dnsRecords = [
   { address: "stanford.edu", dns: "171.67.215.200" },
   { address: "youtube.com", dns: "142.250.190.46" },
 ];
+
+// function decToBinary(dec) {
+//   let binary = "";
+//   if (dec === 0) {
+//     return 0;
+//   }
+//   while (dec > 0) {
+//     let remainder = dec % 2;
+//     binary = remainder + binary;
+//     dec = Math.floor(dec / 2);
+//   }
+//   return binary;
+// }
+
+// console.log(decToBinary(9));
+
+function findDNS(records, target) {
+  let low = 0;
+  let high = records.length - 1;
+  let mid = Math.floor((low + high) / 2);
+  while (low <= high) {
+    if (records[mid].address === target) {
+      return records[mid].dns;
+    } else if (records[mid].address < target) {
+      console.log("lower");
+    }
+  }
+}
+console.log(decToBinary(dnsRecords));
+// console.log(findDNS(dnsRecords, "google.com"));
+
+console.log(dnsRecords[1].dns);
