@@ -17,11 +17,10 @@ cart.forEach((item) => {
   }
   totalIndiv.push(price * item.quantity);
 });
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < totalIndiv.length; i++) {
   total += totalIndiv[i];
 }
 console.log(
-  `Your final total is $${total} dollars. It can also be $${
-    total + 0.01
-  } dollars if you're a cool kid and know why`
+  `Your final total is $${total} dollars. It can also be $${toFloor(total)}
+  )} dollars if you're a cool kid and know why`
 );
