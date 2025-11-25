@@ -1,96 +1,183 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+body,
+html,
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  background-color: #222222;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.top-header {
+  background-color: black;
+  padding: 30px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.top-header__title {
+  font-size: 120px;
+  color: #f8f5ee;
+  font-family: "Montserrat", cursive;
+  font-optical-sizing: auto;
+  margin-bottom: 0;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.top-header__subheader {
+  font-size: 40px;
+  margin-top: 0;
+  color: #f8f5ee;
+  padding-bottom: 150px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: 1.5px;
 }
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+
+.container {
+  width: 96vw;
+  margin: 2rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-header {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: 1.5px;
+  text-align: center;
+  height: 80px;
+  text-decoration: underline;
+  font-size: 35px;
 }
 
 .card {
-  padding: 2em;
+  width: 24%;
+  height: 35rem;
+  margin: 3rem 0;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 7px 7px 5px rgb(126, 126, 126);
 }
 
-.read-the-docs {
-  color: #888;
+.card-img {
+  width: 350px;
+  height: 290px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.card-price {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: 0px;
+  font-size: 30px;
+  color: #222222;
+}
+
+.style-button {
+  display: inline-block;
+  outline: 0;
+  border: none;
   cursor: pointer;
-  transition: border-color 0.25s;
+  line-height: 1.2rem;
+  font-weight: 900;
+  background: #007a5a;
+  padding: 8px 14px 9px;
+  font-size: 15px;
+  border-radius: 4px;
+  color: #fff;
+  height: 36px;
+  transition: all 75ms ease-in-out;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.style-button:hover {
+  box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.card-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  gap: 150px;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    background-color: red;
   }
-  a:hover {
-    color: #747bff;
+
+  .card {
+    width: 100%;
+    height: auto;
   }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+
+.style-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
+  transition: 0.3s;
+}
+
+.cart {
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  margin-top: auto;
+  color: black;
+  background-color: white;
+  width: 50%;
+  margin: auto;
+}
+
+.cart-items {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-title {
+  font-size: 30px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.filter-btn {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 14px 24px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 200ms, background 200ms;
+  background: white;
+  color: #000000;
+  box-shadow: 0 0 0 3px #000000 inset;
+}
+.filter-btn:hover {
+  transform: translateY(2px);
+}
+
+.btn-bgc {
+  padding-top: 20px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.cart-total {
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  margin-top: auto;
+  color: black;
+  background-color: white;
+  width: 50%;
+  margin: auto;
 }
