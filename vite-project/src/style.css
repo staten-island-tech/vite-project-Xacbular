@@ -13,9 +13,9 @@ body {
 }
 
 .top-header__title {
-  font-size: 120px;
-  color: #f8f5ee;
-  font-family: "Montserrat", cursive;
+  font-size: auto;
+  color: white;
+  font-family: "Sophia", cursive;
   font-optical-sizing: auto;
   margin-bottom: 0;
 }
