@@ -2,8 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NVIDIA Cards</title>
-    <object data="" type=""></object>
+    <title>Luminary Hub</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,44 +11,55 @@
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     />
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Sofia&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
     </style>
   </head>
 
   <div class="top-header">
-    <h1 class="top-header__title">Playlist</h1>
-    <h2 class="top-header__subheader">
-      NVIDIA Powers the World’s AI. And Yours.<br />(Definitely not the correct
-      prices)
-    </h2>
+    <h3>Whalen Hub</h3>
   </div>
 
+  <div class="dashboard-container">
+    <div class="left-panel">
+      <h3>Themes</h3>
+      <button class="theme-btn">Chill Sip</button>
+      <button class="theme-btn offset-right">Focus Roast</button>
+      <button class="theme-btn offset-more">Sweet Lo-fi</button>
+      <button class="theme-btn">Creamy Beats</button>
+    </div>
+
+    <div class="center-panel">
+      <h1 class="greeting">Welcome to your<br />Cafe, User</h1>
+
+      <div class="action-container">
+        <button class="big-action-card">
+          <span style="font-size: 40px">☕</span>
+          Play Music
+        </button>
+
+        <button class="big-action-card brown-style">
+          <span style="font-size: 40px">Beans+</span>
+          Add Brew
+        </button>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="featured-card">
+        <h3>Today's Special</h3>
+        <div class="album-art-placeholder">Album Art</div>
+        <p><strong>Sunday Morning</strong><br />by Imaginary Cafe</p>
+      </div>
+
+      <div style="margin-top: 30px">
+        <h4>Recent Activity</h4>
+        <p>🟢 Added "Matcha Latte"</p>
+        <p>🟤 Played "Rainy Day"</p>
+      </div>
+    </div>
+  </div>
   <body>
-    <div class="btn-bgc">
-      <button class="filter-btn">Show All</button>
-      <button class="filter-btn" data-name="40">RTX 40 Series</button>
-      <button class="filter-btn" data-name="50">RTX 50 Series</button>
-      <button class="filter-btn" data-name="30">RTX 30 Series</button>
-    </div>
-
-    <div class="container">
-      <!-- <div class="card">
-        <h2 class="card-header">RTX 5070TI</h2>
-        <img class="card-img" src="images/shopping.png" alt="candy" />
-        <div class="card-bottom">
-          <h3 class="card-price">$800</h3>
-          <button class="style-button">Buy Now</button>
-        </div>
-      </div> -->
-    </div>
-
-    <div class="cart">
-      <h2 class="cart-title">Shopping Cart</h2>
-    </div>
-
-    <div class="cart-total"></div>
-
-    <img src="./images/"></img>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
