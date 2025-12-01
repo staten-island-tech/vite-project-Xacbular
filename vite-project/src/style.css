@@ -72,7 +72,7 @@ body {
   margin: 10px 0;
   font-family: var(--font-main);
   cursor: pointer;
-  width: fit-content;
+  width: 100px;
   transition: 0.3s;
 }
 
