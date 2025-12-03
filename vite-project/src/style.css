@@ -10,15 +10,21 @@
   --font-serif: "Lora", serif;
 }
 
+.matcha {
+  background-color: var(--primary-green);
+}
+
+.midnight {
+  background-color: #2e2e3a;
+}
+
 body {
   margin: 0;
-  background-color: var(--primary-green);
   color: var(--text-main);
   font-family: var(--font-main);
 }
 
 .top-header {
-  background-color: var(--primary-green);
   text-align: center;
   padding: 1px;
   color: var(--dark-green);
@@ -72,7 +78,7 @@ body {
   margin: 10px 0;
   font-family: var(--font-main);
   cursor: pointer;
-  width: 100px;
+  width: 150px;
   transition: 0.3s;
 }
 

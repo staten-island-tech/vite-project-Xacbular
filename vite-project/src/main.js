@@ -48,3 +48,13 @@
 //  */
 
 import "./style.css";
+
+document.querySelector(".theme-btn").addEventListener("click", function () {
+  if (document.body.classList.contains("matcha")) {
+    document.body.classList.add("midnight");
+    document.body.classList.remove("matcha");
+  } else {
+    document.body.classList.add("matcha");
+    document.body.classList.remove("midnight");
+  }
+});
