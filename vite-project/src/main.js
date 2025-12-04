@@ -50,11 +50,18 @@
 import "./style.css";
 
 document.querySelector(".theme-btn").addEventListener("click", function () {
-  if (document.body.classList.contains("matcha")) {
-    document.body.classList.add("midnight");
-    document.body.classList.remove("matcha");
-  } else {
-    document.body.classList.add("matcha");
-    document.body.classList.remove("midnight");
-  }
+  document.body.classList.toggle("midnight");
 });
+
+const themeButtons = document.querySelectorAll(".theme-btn");
+themeButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const theme = btn.dataset.theme;
+    changeTheme(theme);
+  });
+});
+
+function changeTheme(theme) {
+  document.body.className = "";
+  document.body.classList.toggle(theme);
+}
