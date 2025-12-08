@@ -1,71 +1,60 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luminary Hub</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Now Brewing - Music</title>
+
     <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Sofia&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
-    </style>
   </head>
+  <body>
+    <button class="back-link">← Back to Cafe</button>
 
-  <body class="default">
-    <div class="top-header">
-      <h3>Whalen Hub</h3>
-    </div>
+    <div class="sticker s1">🥐</div>
+    <div class="sticker s2">🍵</div>
+    <div class="sticker s3">🫖</div>
+    <div class="sticker s4">🌿</div>
 
-    <div class="dashboard-container">
-      <div class="left-panel">
-        <h3>Themes</h3>
-        <button class="theme-btn" data-theme="matcha">Matcha</button>
-        <button class="theme-btn" data-theme="midnight">Midnight</button>
-        <button class="theme-btn" data-theme="sweet-lo-fi">Sweet Lo-fi</button>
-        <button class="theme-btn" data-theme="creamy-beats">
-          Creamy Beats
-        </button>
+    <div class="player-stage">
+      <div class="album-art" id="albumArt">🍃</div>
+
+      <div class="song-info">
+        <h1 id="songTitle">Green Tea Dreams</h1>
+        <h2 id="artistName">Cafe Vibes</h2>
       </div>
 
-      <div class="center-panel">
-        <h1 class="greeting">Welcome to your<br />Cafe, User</h1>
-
-        <div class="action-container">
-          <button class="big-action-card">
-            <span style="font-size: 40px">☕</span>
-            Play Music
-          </button>
-
-          <button class="big-action-card brown-style">
-            <span style="font-size: 40px">Beans+</span>
-            Add Brew
-          </button>
+      <div class="progress-container">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+        <div class="time-stamps">
+          <span id="currentTime">0:00</span>
+          <span id="totalTime">3:30</span>
         </div>
       </div>
 
-      <div class="right-panel">
-        <div class="featured-card">
-          <h3>Today's Special</h3>
-          <div class="album-art-placeholder">Album Art</div>
-          <p><strong>Sunday Morning</strong><br />by Imaginary Cafe</p>
-        </div>
-
-        <div style="margin-top: 30px">
-          <h4>Recent Activity</h4>
-          <p>🟢 Added "Matcha Latte"</p>
-          <p>🟤 Played "Rainy Day"</p>
-        </div>
+      <!-- Controls -->
+      <div class="controls">
+        <!-- IDs added so JavaScript can find them -->
+        <button class="control-btn" id="prevBtn">⏮</button>
+        <button class="control-btn play-btn" id="playBtn">▶</button>
+        <button class="control-btn" id="nextBtn">⏭</button>
       </div>
     </div>
+
+    <!-- Up Next Popup -->
+    <div class="up-next-card">
+      <small style="color: #c38e70; font-weight: bold">Up Next:</small><br />
+      <span id="upNextText">Jasmine Serenity</span>
+    </div>
+
     <nav>
       <a href="./1.html">Go to Page 1</a>
       <a href="./3.html">Go to Page 3</a>
     </nav>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/2.js"></script>
   </body>
 </html>
