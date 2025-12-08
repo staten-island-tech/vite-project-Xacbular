@@ -1,4 +1,3 @@
-// 1. DATA: List of songs
 import "./2.css";
 
 let songs = [
@@ -30,12 +29,12 @@ if (storedSongs) {
   songs = [...songs, ...storedSongs];
 }
 
-// 2. SETUP: Create the Audio Object
-const audioPlayer = new Audio(); // This is the engine that plays music
+//audio
+const audioPlayer = new Audio();
 let currentSongIndex = 0;
 let isPlaying = false;
 
-// 3. HTML ELEMENTS
+//html
 const titleEl = document.getElementById("songTitle");
 const artistEl = document.getElementById("artistName");
 const artEl = document.getElementById("albumArt");
@@ -47,27 +46,25 @@ const totalTimeEl = document.getElementById("totalTime"); // Ensure you have thi
 const prevBtnEl = document.getElementById("prevBtn");
 const nextBtnEl = document.getElementById("nextBtn");
 
-// --- CORE FUNCTIONS ---
-
-// Load song details into the DOM and the Audio Player
+//load
 function loadSong(index) {
   const song = songs[index];
 
-  // Visual Updates
+  //visual
   titleEl.innerText = song.title;
   artistEl.innerText = song.artist;
   nextEl.innerText = song.next;
   artEl.style.backgroundColor = song.color;
 
-  // Audio Updates
+  //audio
   audioPlayer.src = song.src; // Tell the player where the file is
   audioPlayer.load(); // Load the file
 
-  // Reset Progress Bar Visuals
+  //reset progress
   progressBarEl.style.width = "0%";
   currentTimeEl.innerText = "0:00";
 
-  // If we were already playing, keep playing the new song
+  //continue playing if already playing
   if (isPlaying) {
     audioPlayer.play();
   }
@@ -88,7 +85,7 @@ function togglePlay() {
 function nextSong() {
   currentSongIndex++;
   if (currentSongIndex > songs.length - 1) {
-    currentSongIndex = 0; // Loop back to start
+    currentSongIndex = 0; //loop to start
   }
   loadSong(currentSongIndex);
 }
@@ -96,35 +93,35 @@ function nextSong() {
 function prevSong() {
   currentSongIndex--;
   if (currentSongIndex < 0) {
-    currentSongIndex = songs.length - 1; // Loop to end
+    currentSongIndex = songs.length - 1; //loop to end
   }
   loadSong(currentSongIndex);
 }
 
-// --- AUTOMATIC EVENTS (The "Magic" Part) ---
+//automatic
 
-// 1. Update Progress Bar automatically while playing
+//pbar update
 audioPlayer.addEventListener("timeupdate", (e) => {
-  // Get values from the audio player directly
+  //value
   const { duration, currentTime } = e.srcElement;
 
-  // Calculate percent
+  //percent
   const progressPercent = (currentTime / duration) * 100;
   progressBarEl.style.width = `${progressPercent}%`;
 
-  // Update time text
+  //text time
   currentTimeEl.innerText = formatTime(currentTime);
 
-  // Update total duration text (NaN check is for when song is loading)
+  //update total duration
   if (duration) {
     totalTimeEl.innerText = formatTime(duration);
   }
 });
 
-// 2. Automatically go to next song when current one ends
+//next song when ended
 audioPlayer.addEventListener("ended", nextSong);
 
-// Helper: Format seconds into MM:SS
+//math
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
   let seconds = Math.floor(time % 60);
@@ -134,16 +131,15 @@ function formatTime(time) {
   return `${minutes}:${seconds}`;
 }
 
-// --- INITIALIZE ---
-// Load the first song on startup
+//loadsong
 loadSong(currentSongIndex);
 
-// Event Listeners
+//eventlistener
 playBtnEl.addEventListener("click", togglePlay);
 nextBtnEl.addEventListener("click", nextSong);
 prevBtnEl.addEventListener("click", prevSong);
 
-// Navigation
+//navigation
 const myButton = document.querySelector(".back-link");
 myButton.addEventListener("click", () => {
   window.location.href = "1.html";
