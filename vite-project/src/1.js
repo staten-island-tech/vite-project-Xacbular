@@ -21,3 +21,8 @@ const myButton = document.querySelector(".big-action-card");
 myButton.addEventListener("click", () => {
   window.location.href = "2.html";
 });
+
+const addPS = document.querySelector(".big-action-card.brown-style");
+addPS.addEventListener("click", () => {
+  window.location.href = "3.html";
+});

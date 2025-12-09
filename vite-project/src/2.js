@@ -69,7 +69,6 @@ function loadSong(index) {
     audioPlayer.play();
   }
 }
-
 function togglePlay() {
   if (isPlaying) {
     audioPlayer.pause();
