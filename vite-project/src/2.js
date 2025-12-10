@@ -28,6 +28,7 @@ const storedSongs = JSON.parse(localStorage.getItem("myCustomSongs"));
 if (storedSongs) {
   songs = [...songs, ...storedSongs];
 }
+console.log("Loaded songs:", songs);
 
 //audio
 const audioPlayer = new Audio();
