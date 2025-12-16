@@ -36,5 +36,5 @@ if (localStorage.getItem("theme")) {
 const albumArt = document.querySelector(".album-art-placeholder");
 albumArt.insertAdjacentHTML(
   "afterbegin",
-  `<img src="public/cafe.jpg" alt="Album Art" style="max-width: 100%; height: auto;" />`
+  `<img src="cafe.jpg" alt="Album Art" style="max-width: 100%; height: auto;" />`
 );
