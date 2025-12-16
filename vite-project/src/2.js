@@ -121,7 +121,7 @@ prevBtnEl.addEventListener("click", prevSong);
 //navigation
 const myButton = document.querySelector(".back-link");
 myButton.addEventListener("click", () => {
-  window.location.href = "1.html";
+  window.location.href = "index.html";
 });
 
 const theme = JSON.parse(localStorage.getItem("theme"));
