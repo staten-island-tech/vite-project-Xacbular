@@ -16,19 +16,37 @@
     </style>
   </head>
 
-  <input
-    class="url-input"
-    type="url"
-    id="baseUrl"
-    placeholder="https://example.com/search?q="
-    required
-  />
+  <body class="default">
+    <button class="back-link">← Back to Cafe</button>
 
-  <button class="create">Create Playlist</button>
+    <h1 class="title">Make Your Playlist!</h1>
 
-  <nav>
-    <a href="./2.html">Go to Page 2</a>
-    <a href="./1.html">Go to Page 1</a>
-  </nav>
-  <script type="module" src="/src/3.js"></script>
+    <input
+      class="input"
+      type="url"
+      id="name"
+      placeholder="Name of the Song"
+      required
+    />
+
+    <input
+      class="input"
+      type="url"
+      id="artist"
+      placeholder="Artist of the Song"
+      required
+    />
+
+    <input
+      class="input"
+      type="url"
+      id="source"
+      placeholder="YT Link: https://example.com/search?q="
+      required
+    />
+
+    <div><button class="create">Create Playlist</button></div>
+
+    <script type="module" src="/src/3.js"></script>
+  </body>
 </html>

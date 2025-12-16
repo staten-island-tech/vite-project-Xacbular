@@ -1,34 +1,14 @@
 import "./2.css";
 
-let songs = [
-  {
-    title: "Green Tea Dreams",
-    artist: "Cafe Vibes",
-    color: "#D8E2DC",
-    next: "Jasmine Serenity",
-    src: "https://youtu.be/lIDOhM4Yf_M", // Example Audio
-  },
-  {
-    title: "Jasmine Serenity",
-    artist: "Lo-Fi Brewer",
-    color: "#E0F2F1",
-    next: "Espresso Rain",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-  },
-  {
-    title: "Espresso Rain",
-    artist: "Sunday Morning",
-    color: "#D7CCC8",
-    next: "Green Tea Dreams",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-  },
-];
+let songs = [];
 
 const storedSongs = JSON.parse(localStorage.getItem("myCustomSongs"));
 if (storedSongs) {
-  songs = [...songs, ...storedSongs];
+  songs.push(...storedSongs);
+  console.log("Loaded songs:", songs);
+} else {
+  console.log("No custom songs found in localStorage.");
 }
-console.log("Loaded songs:", songs);
 
 //audio
 const audioPlayer = new Audio();
@@ -98,8 +78,6 @@ function prevSong() {
   loadSong(currentSongIndex);
 }
 
-//automatic
-
 //pbar update
 audioPlayer.addEventListener("timeupdate", (e) => {
   //value
@@ -132,8 +110,9 @@ function formatTime(time) {
 }
 
 //loadsong
-loadSong(currentSongIndex);
-
+if (songs.length > 0) {
+  loadSong(currentSongIndex);
+}
 //eventlistener
 playBtnEl.addEventListener("click", togglePlay);
 nextBtnEl.addEventListener("click", nextSong);
@@ -143,4 +122,52 @@ prevBtnEl.addEventListener("click", prevSong);
 const myButton = document.querySelector(".back-link");
 myButton.addEventListener("click", () => {
   window.location.href = "1.html";
+});
+
+const theme = JSON.parse(localStorage.getItem("theme"));
+document.body.className = "";
+document.body.classList.toggle(theme);
+
+const manageButtons = document.querySelectorAll(".reset");
+
+manageButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const dataid = btn.dataset.id;
+
+    if (dataid === "remove") {
+      songs.splice(0, songs.length);
+      localStorage.clear("MyCustomSongs");
+      titleEl.innerText = "No Songs Available";
+      artistEl.innerText = ":(";
+      console.log("Songs reset (Custom songs removed and page reloaded).");
+    } else if (dataid === "default") {
+      songs.splice(0, songs.length);
+      songs.push(
+        {
+          title: "Green Tea Dreams",
+          artist: "Cafe Vibes",
+          color: "#D8E2DC",
+          next: "Jasmine Serenity",
+          src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        },
+        {
+          title: "Jasmine Serenity",
+          artist: "Lo-Fi Brewer",
+          color: "#E0F2F1",
+          next: "Espresso Rain",
+          src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        },
+        {
+          title: "Espresso Rain",
+          artist: "Sunday Morning",
+          color: "#D7CCC8",
+          next: "Green Tea Dreams",
+          src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        }
+      );
+
+      localStorage.setItem("myCustomSongs", JSON.stringify(songs));
+      console.log("Default songs added to the current list.");
+    }
+  });
 });

@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="default">
     <button class="back-link">← Back to Cafe</button>
 
     <div class="sticker s1">🥐</div>
@@ -51,10 +51,11 @@
       <span id="upNextText">Jasmine Serenity</span>
     </div>
 
-    <nav>
-      <a href="./1.html">Go to Page 1</a>
-      <a href="./3.html">Go to Page 3</a>
-    </nav>
+    <div class="buttons">
+      <button class="reset" data-id="remove">Remove All Songs</button>
+      <button class="reset" data-id="default">Use Default Songs</button>
+    </div>
+
     <script type="module" src="/src/2.js"></script>
   </body>
 </html>
